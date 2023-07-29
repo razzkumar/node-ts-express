@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import capitalize from '../utils/capitalize';
+import capitalize from '~/utils/capitalize';
 
 const zodErrorMap: z.ZodErrorMap = (error, ctx) => {
   // capitalize the first letter of the field name

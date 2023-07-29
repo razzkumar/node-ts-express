@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import { config } from '../config';
+import { config } from '~/config';
 
 interface GenerateOptions {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
