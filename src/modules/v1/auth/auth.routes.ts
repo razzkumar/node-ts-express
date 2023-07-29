@@ -86,4 +86,18 @@ export default router;
  *              $ref: '#/components/schemas/LoginResponse'
  *       404:
  *         description: User not found
+ * '/api/v1/auth/me':
+ *  get:
+ *     tags:
+ *     - Auth
+ *     summary: Get Authenticated User
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *          application/json:
+ *           schema:
+ *              $ref: '#/components/schemas/UserResponse'
+ *       404:
+ *         description: Not logged in
  */
