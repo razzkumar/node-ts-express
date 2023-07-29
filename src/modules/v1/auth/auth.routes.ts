@@ -98,6 +98,6 @@ export default router;
  *          application/json:
  *           schema:
  *              $ref: '#/components/schemas/UserResponse'
- *       404:
+ *       403:
  *         description: Not logged in
  */

@@ -4,4 +4,11 @@ module.exports = {
   testEnvironment: 'node',
   testMatch: ['./**/*.test.ts'],
   verbose: true,
+  transform: {
+    '^.+\\.ts?$': 'ts-jest',
+  },
+  moduleNameMapper: {
+    '^~/package.json': '<rootDir>/package.json',
+    '^~/(.*)$': '<rootDir>/src/$1',
+  },
 };
