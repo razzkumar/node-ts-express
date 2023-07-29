@@ -10,23 +10,11 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm ci
-
-FROM base as builder
-
-# Create app directory
-WORKDIR /app
-
-# Install app dependencies
-COPY package*.json ./
-
-# Install dependencies
-RUN npm ci
-
-# Bundle app source
 COPY . .
-
 # Generate prisma client
 RUN npx prisma generate
+
+FROM dev as builder
 
 # Build app
 RUN npm run build
@@ -54,6 +42,7 @@ USER apprunner
 # Expose port
 EXPOSE 8080
 
+ENTRYPOINT
 # Start app
 CMD [ "node", "/app/src/index.js" ]
 

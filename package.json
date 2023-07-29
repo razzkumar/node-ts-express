@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc && tsc-alias",
+    "prestart": "npm run build",
     "start": "node dist/src/index.js | pino-pretty",
     "dev": "tsc && (concurrently 'tsc -w' 'tsc-alias -w' 'nodemon dist/src/index.js | pino-pretty')",
     "prepare": "husky install",

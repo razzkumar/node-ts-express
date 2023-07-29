@@ -34,6 +34,21 @@ export default router;
  *        password:
  *          type: string
  *          default: stringPassword123
+ *    UserUpdateInput:
+ *      type: object
+ *      example:
+ *        {
+ *          "email": "updated@pafin.com",
+ *        }
+ *      properties:
+ *        email:
+ *          type: string
+ *          default: sr.dev@pafin.com
+ *        name:
+ *          type: string
+ *          default: tech lead
+ *        password:
+ *          type: string
  *    UserResponse:
  *      type: object
  *      properties:
@@ -154,16 +169,19 @@ export default router;
  *        in: path
  *        description: The id of the user
  *        required: true
+ *        schema:
+ *          type: string
+ *          example: clknjtlkv0000orm6ly0tweww
  *     responses:
  *       200:
  *         description: Success
  *         content:
  *          application/json:
  *           schema:
- *              $ref: '#/components/schema/UserResponse'
+ *              $ref: '#/components/schemas/UserResponse'
  *       404:
  *         description: User not found
- *  put:
+ *  patch:
  *     tags:
  *     - Users
  *     summary: Update a single user
@@ -172,19 +190,22 @@ export default router;
  *        in: path
  *        description: The id of the user
  *        required: true
+ *        schema:
+ *          type: string
+ *          example: clknjtlkv0000orm6ly0tweww
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schema/UserInput'
+ *             $ref: '#/components/schemas/UserUpdateInput'
  *     responses:
  *       200:
  *         description: Success
  *         content:
  *          application/json:
  *           schema:
- *              $ref: '#/components/schema/UserResponse'
+ *              $ref: '#/components/schemas/UserResponse'
  *       403:
  *         description: Forbidden
  *       404:
@@ -198,8 +219,15 @@ export default router;
  *        in: path
  *        description: The id of the user
  *        required: true
+ *        schema:
+ *          type: string
+ *          example: clknjtlkv0000orm6ly0tweww
  *     responses:
  *       200:
+ *         content:
+ *          application/json:
+ *           schema:
+ *              $ref: '#/components/schemas/UserResponse'
  *         description: User deleted
  *       403:
  *         description: Forbidden
