@@ -42,7 +42,7 @@ COPY --from=builder /app/node_modules ./node_modules
 
 COPY package*.json ./
 RUN npm install --ignore-scripts --omit=dev
-RUN npx prisma generate
+
 COPY --from=builder /app/dist ./
 
 RUN addgroup -g 1001 -S nodejs
