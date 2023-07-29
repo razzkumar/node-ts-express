@@ -55,6 +55,6 @@ USER apprunner
 EXPOSE 8080
 
 # Start app
-CMD [ "node", "/app/index.js" ]
+CMD [ "node", "/app/src/index.js" ]
 
 

@@ -12,7 +12,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 
     return res.json({
       status: 'success',
-      payload: registeredUser,
+      data: registeredUser,
     });
   } catch (error) {
     return next(error);
@@ -27,7 +27,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
     return res.json({
       status: 'success',
-      payload: tokens,
+      data: tokens,
     });
   } catch (error) {
     return next(error);
@@ -42,7 +42,7 @@ export const getProfile = async (req: Request, res: Response, next: NextFunction
 
     return res.json({
       status: 'success',
-      payload: currentUser,
+      data: currentUser,
     });
   } catch (error) {
     return next(error);

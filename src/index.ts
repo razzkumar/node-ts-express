@@ -9,6 +9,7 @@ import { handleError, AppError } from './utils/errorHandler';
 
 import authRoutes from './modules/v1/auth/auth.routes';
 import userRoutes from './modules/v1/user/user.routes';
+import docsRoutes from './modules/v1/swagger/swagger.router';
 
 const app: Express = express();
 const port = config.app.port || 8080;
@@ -18,7 +19,17 @@ app.use(httpLogger);
 app.use(cors(config.cors));
 app.use(express.json());
 
-// Health Check
+/**
+ * @openapi
+ * /readyz:
+ *  get:
+ *     tags:
+ *     - Healthcheck
+ *     description: Responds if the app is up and running
+ *     responses:
+ *       200:
+ *         description: App is up and running
+ */
 app.get('/readyz', (req: Request, res: Response) => {
   res.status(httpStatus.OK).send('OK');
 });
@@ -26,6 +37,9 @@ app.get('/readyz', (req: Request, res: Response) => {
 // API Routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
+
+// Docs Rotes
+app.use('/api/v1/docs', docsRoutes);
 
 // Catch 404 and forward to error handler
 app.use((req: Request, res: Response, next: NextFunction) => {

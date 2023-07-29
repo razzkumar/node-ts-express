@@ -9,7 +9,7 @@ export interface User extends Omit<UserWithPassowrd, 'password'> {
   password?: string;
 }
 
-export interface GetUsersServiceParams {
+export interface UserListParams {
   page?: number;
   limit?: number;
   sortOrder?: SortOrder;

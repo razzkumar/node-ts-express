@@ -1,12 +1,11 @@
 import httpStatus from 'http-status';
 import createError from 'http-errors';
-import { User, PrismaClient, Prisma } from '@prisma/client';
+import { User, Prisma } from '@prisma/client';
 
-import { GetUsersServiceParams } from './types';
+import prisma from '~/lib/prisma';
+import { UserListParams } from './types';
 
-const prisma = new PrismaClient();
-
-const listUsers = async ({ page = 1, limit = 10, sortField = 'name', sortOrder = 'desc' }: GetUsersServiceParams) => {
+const listUsers = async ({ page = 1, limit = 10, sortField = 'name', sortOrder = 'desc' }: UserListParams) => {
   const orderBy = { [sortField]: sortOrder };
 
   const users = await prisma.user.findMany({

@@ -13,7 +13,7 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
 
     return res.json({
       status: 'success',
-      payload: updatedUser,
+      data: updatedUser,
     });
   } catch (error) {
     return next(error);
@@ -28,7 +28,7 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
 
     return res.json({
       status: 'success',
-      payload: newUser,
+      data: newUser,
     });
   } catch (error) {
     return next(error);
@@ -43,7 +43,7 @@ export const getUserById = async (req: Request, res: Response, next: NextFunctio
 
     return res.json({
       status: 'success',
-      payload: user,
+      data: user,
     });
   } catch (error) {
     return next(error);
@@ -58,7 +58,7 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
 
     return res.json({
       status: 'success',
-      payload: deletedUser,
+      data: deletedUser,
     });
   } catch (error) {
     return next(error);
