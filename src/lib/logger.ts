@@ -2,7 +2,7 @@ import pino from 'pino';
 import pinoHttp from 'pino-http';
 import httpStatus from 'http-status';
 
-import { config } from '../config';
+import { config } from '~/config';
 
 export const logger = pino({ level: config.logger.level || 'info' });
 
