@@ -5,6 +5,7 @@ import { Request, Response, NextFunction } from 'express';
 
 interface Options {
   queryString?: boolean;
+  params?: boolean;
 }
 
 export const validate =
@@ -13,6 +14,8 @@ export const validate =
       //parse the query string if the option is set to true, otherwise parse the body
       if (options?.queryString) {
         req.query = await schema.parseAsync(req.query);
+      } else if (options?.params) {
+        req.query = await schema.parseAsync(req.params);
       } else {
         req.body = await schema.parseAsync(req.body);
       }
