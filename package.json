@@ -13,7 +13,7 @@
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
     "check-lint": "lint-staged",
-    "test": "jest --watchAll"
+    "test": "jest"
   },
   "repository": "git@github.com:razzkumar/node-ts-express.git",
   "license": "MIT",
