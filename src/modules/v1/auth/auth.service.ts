@@ -14,7 +14,7 @@ const register = async (user: User) => {
     if (existingUser?.email !== user.email) throw createError(httpStatus.CONFLICT, 'User already registered');
   }
 
-  const hashedPassword = await bcrypt.hash(user.password as string, Number(config.bcrypt.saltRounds));
+  const hashedPassword = await bcrypt.hash(user.password, Number(config.bcrypt.saltRounds));
 
   return await userService.createUser({
     ...user,
@@ -29,13 +29,13 @@ const login = async (email: string, password: string) => {
     throw createError(httpStatus.BAD_REQUEST, 'Invalid email or password');
   }
 
-  const isPasswordValid = await bcrypt.compare(password, user?.password as string);
+  const isPasswordValid = await bcrypt.compare(password, user?.password);
 
   if (!isPasswordValid) {
     throw createError(httpStatus.BAD_REQUEST, 'Invalid email or password');
   }
 
-  const accessToken = await tokenService.generateAccessToken(user);
+  const accessToken = tokenService.generateAccessToken(user);
 
   return {
     accessToken,
