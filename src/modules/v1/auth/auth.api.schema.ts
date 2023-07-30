@@ -8,7 +8,7 @@ const passwordValidationError =
 export const userSchema = z.object({
   password: z.string().regex(passwordRegex, passwordValidationError),
   name: z.string(),
-  email: z.string(),
+  email: z.string().email(),
 });
 
 export const loginSchema = z.object({

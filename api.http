@@ -2,7 +2,7 @@
 @port=8080
 
 // generated using /login
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNsa21zZmUzdjAwMDFvcnRxY2N3aXdkenUiLCJlbWFpbCI6ImRldkBwYWZpbi5jb20iLCJuYW1lIjoiMTB4IGRldmVsb3BlciIsImlhdCI6MTY5MDU2MTIzMSwiZXhwIjoxNjkwNTYzMDMxLCJhdWQiOiJhY2Nlc3MiLCJzdWIiOiJjbGttc2ZlM3YwMDAxb3J0cWNjd2l3ZHp1In0.wdi-5zXWSnOoX2HDB9o4pqjTr9lMvCluAHGGdfq-F4E
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNjMDAxNzlmLWYzODgtNDNhYS1hN2M3LWFjNDI0YTkzMDNlMiIsImVtYWlsIjoiMTB4LmRldkBwYWZpbi5jb20iLCJuYW1lIjoiMTB4IGRldmVsb3BlciIsImlhdCI6MTY5MDcyODcxMiwiZXhwIjoxNjkwNzMwNTEyLCJhdWQiOiJhY2Nlc3MiLCJzdWIiOiIzYzAwMTc5Zi1mMzg4LTQzYWEtYTdjNy1hYzQyNGE5MzAzZTIifQ.ixib_Wv0Kci6r6OLJ0kkSuds9IfNLDr4Xo9sc1No06A
 
 GET http://{{hostname}}:{{port}}/readyz
 
@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
     "name": "10x developer",
-    "email": "dev@pafin.com",
+    "email": "10x.dev@pafin.com",
     "password": "P$ssW0Rd@123"
 }
 
@@ -22,7 +22,7 @@ POST http://{{hostname}}:{{port}}/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "email": "dev@pafin.com",
+    "email": "10x.dev@pafin.com",
     "password": "P$ssW0Rd@123"
 }
 
@@ -39,7 +39,7 @@ Authorization: Bearer {{token}}
 
 {
     "name": "Jr. developer",
-    "email": "jr.dev@pafin.com",
+    "email": "jr@dev.com",
     "password": "P$ssW0Rd@123"
 }
 
@@ -49,13 +49,13 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 // GET user by ID
-GET http://{{hostname}}:{{port}}/api/v1/users/clkmsf3iy0000ortqtj4iahe1
+GET http://{{hostname}}:{{port}}/api/v1/users/f08e9dde-6a77-478c-b781-d33c5bb38e2c
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 
 // Update user by ID
-PATCH http://{{hostname}}:{{port}}/api/v1/users/clkmsf3iy0000ortqtj4iahe1
+PATCH http://{{hostname}}:{{port}}/api/v1/users/f08e9dde-6a77-478c-b781-d33c5bb38e2c
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -64,7 +64,7 @@ Authorization: Bearer {{token}}
 }
 
 // DELETE user 
-DELETE  http://{{hostname}}:{{port}}/api/v1/users/clkmsf3iy0000ortqtj4iahe1
+DELETE  http://{{hostname}}:{{port}}/api/v1/users/f08e9dde-6a77-478c-b781-d33c5bb38e2c
 Content-Type: application/json
 Authorization: Bearer {{token}}
 

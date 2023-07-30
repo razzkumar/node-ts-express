@@ -1,15 +1,17 @@
 import express from 'express';
 
+import { validate } from '~/middlewares/validateApiSchema';
+import { createUserSchema, updateUserSchema } from './user.api.schema';
 import { isAuthenticated } from '~/middlewares/isAuthenticated';
 import { listUsers, createUser, getUserById, updateUser, deleteUser } from './user.controller';
 
 const router = express.Router();
 
-router.post('/', isAuthenticated, createUser);
+router.post('/', validate(createUserSchema), isAuthenticated, createUser);
 router.get('/:id', isAuthenticated, getUserById);
 
 router.get('/', isAuthenticated, listUsers);
-router.patch('/:id', isAuthenticated, updateUser);
+router.patch('/:id', validate(updateUserSchema), isAuthenticated, updateUser);
 router.delete('/:id', isAuthenticated, deleteUser);
 
 export default router;

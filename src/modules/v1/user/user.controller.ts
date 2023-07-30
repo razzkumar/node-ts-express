@@ -1,7 +1,9 @@
+import createError from 'http-errors';
 import { Request, Response, NextFunction } from 'express';
 
 import { userService } from './user.service';
 import { SortField, SortOrder } from './types';
+import httpStatus from 'http-status';
 
 export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -40,6 +42,10 @@ export const getUserById = async (req: Request, res: Response, next: NextFunctio
     const { id } = req.params;
 
     const user = await userService.getUserById(id);
+
+    if (!user) {
+      throw createError(httpStatus.NOT_FOUND, `User does not exists with id:${id}`);
+    }
 
     return res.json({
       status: 'success',
