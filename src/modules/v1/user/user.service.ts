@@ -65,28 +65,40 @@ const getUserByEmail = async (email: string) => {
 };
 
 const updateUser = async (id: string, user: Partial<User>) => {
-  const updatedUser = await prisma.user.update({
-    where: { id },
-    data: user,
-    select: {
-      id: true,
-      name: true,
-      email: true,
-    },
-  });
-  return updatedUser;
+  try {
+    return await prisma.user.update({
+      where: { id },
+      data: user,
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
+      throw createError(httpStatus.NOT_FOUND, `User does not exists with id:${id}`);
+    }
+  }
 };
 
-const deleteUser = async (userId: string) => {
-  const deletedUser = await prisma.user.delete({
-    where: { id: userId },
-    select: {
-      id: true,
-      name: true,
-      email: true,
-    },
-  });
-  return deletedUser;
+const deleteUser = async (id: string) => {
+  try {
+    return await prisma.user.delete({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
+      throw createError(httpStatus.NOT_FOUND, `User does not exists with id:${id}`);
+    }
+  }
 };
 
 export const userService = {
