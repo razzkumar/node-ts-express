@@ -1,6 +1,6 @@
-FROM node:18-alpine as base
+FROM node:18-alpine AS base
 
-FROM base as dev
+FROM base AS dev
 
 # Create app directory
 WORKDIR /app
@@ -9,12 +9,12 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm ci --ignore-scripts
 COPY . .
 # Generate prisma client
 RUN npx prisma generate
 
-FROM base as builder
+FROM base AS builder
 
 # Create app directory
 WORKDIR /app
@@ -23,7 +23,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm ci --ignore-scripts
 COPY . .
 # Generate prisma client
 RUN npx prisma generate
@@ -31,7 +31,7 @@ RUN npx prisma generate
 # Build app
 RUN npm run build
 
-FROM base as prod
+FROM base AS prod
 
 # Create app directory
 WORKDIR /app

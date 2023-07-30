@@ -4,7 +4,7 @@ import httpStatus from 'http-status';
 
 import { config } from '~/config';
 
-export const logger = pino({ level: config.logger.level || 'info' });
+export const logger = pino({ level: config.logger.level ?? 'info' });
 
 export const httpLogger = pinoHttp({
   logger,
@@ -13,13 +13,11 @@ export const httpLogger = pinoHttp({
       if (config.app.isProduction) {
         return req;
       }
-      return;
     },
     res: (res) => {
       if (config.app.isProduction) {
         return res;
       }
-      return;
     },
   },
   customSuccessMessage: (req, res) => {
