@@ -8,14 +8,20 @@
 cp .env.example .env
 ```
 
-2. Run application
+2.1 Run database(Optional)
 
 ```bash
-npm run start # for already running pg database
 
-# OR
+docker compose up --build -d
 
-docker compose up --build
+```
+
+2.2 Run application
+
+```bash
+
+npm install
+npm run start
 
 ```
 

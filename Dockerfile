@@ -54,8 +54,6 @@ USER apprunner
 # Expose port
 EXPOSE 8080
 
-ENTRYPOINT ["node"]
-
-CMD [ "/app/src/index.js" ]
+CMD [ "node", "/app/src/index.js" ]
 
 
