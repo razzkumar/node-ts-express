@@ -19,7 +19,7 @@ docker compose up --build -d
 2.2 Run application
 
 ```bash
-
+npx prisma db push
 npm install
 npm run start
 

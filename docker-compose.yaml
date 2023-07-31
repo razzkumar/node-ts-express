@@ -6,7 +6,7 @@ services:
     restart: always
     environment:
       POSTGRESQL_USERNAME: pafin
-      POSTGRESQL_PASSWORD: Pa$$word$123
+      POSTGRESQL_PASSWORD: Password_123
       POSTGRESQL_DATABASE: dev
     healthcheck:
       test: pg_isready -d dev -U pafin
@@ -17,5 +17,5 @@ services:
       - '5432:5432'
     volumes:
       - postgres:/bitnami/postgresql
-    networks:
-      - pafin-net
+volumes:
+  postgres:
