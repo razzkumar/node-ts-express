@@ -1,9 +1,8 @@
-import bcrypt from 'bcrypt';
+import * as argon from 'argon2';
 import httpStatus from 'http-status';
 import { User } from '@prisma/client';
 import createError from 'http-errors';
 
-import { config } from '~/config';
 import { userService } from '../user/user.service';
 import { tokenService } from '../token/token.service';
 
@@ -14,7 +13,7 @@ const register = async (user: User) => {
     if (existingUser?.email !== user.email) throw createError(httpStatus.CONFLICT, 'User already registered');
   }
 
-  const hashedPassword = await bcrypt.hash(user.password, Number(config.bcrypt.saltRounds));
+  const hashedPassword = await argon.hash(user.password);
 
   return await userService.createUser({
     ...user,
@@ -29,7 +28,7 @@ const login = async (email: string, password: string) => {
     throw createError(httpStatus.BAD_REQUEST, 'Invalid email or password');
   }
 
-  const isPasswordValid = await bcrypt.compare(password, user?.password);
+  const isPasswordValid = await argon.verify(user?.password, password);
 
   if (!isPasswordValid) {
     throw createError(httpStatus.BAD_REQUEST, 'Invalid email or password');
