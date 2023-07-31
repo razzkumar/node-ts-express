@@ -2,8 +2,7 @@
 @port=8080
 
 // generated using /login
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNjMDAxNzlmLWYzODgtNDNhYS1hN2M3LWFjNDI0YTkzMDNlMiIsImVtYWlsIjoiMTB4LmRldkBwYWZpbi5jb20iLCJuYW1lIjoiMTB4IGRldmVsb3BlciIsImlhdCI6MTY5MDcyODcxMiwiZXhwIjoxNjkwNzMwNTEyLCJhdWQiOiJhY2Nlc3MiLCJzdWIiOiIzYzAwMTc5Zi1mMzg4LTQzYWEtYTdjNy1hYzQyNGE5MzAzZTIifQ.ixib_Wv0Kci6r6OLJ0kkSuds9IfNLDr4Xo9sc1No06A
-
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdkYWFhNjZiLWJmOWEtNGYyMS1iNGVjLWIyNTk4ZWYwZDk1MiIsImVtYWlsIjoiMTB4LmRldkBwYWZpbi5jb20iLCJuYW1lIjoiMTB4IGRldmVsb3BlciIsImlhdCI6MTY5MDc5MDMzOCwiZXhwIjoxNjkwNzkyMTM4LCJhdWQiOiJhY2Nlc3MiLCJzdWIiOiI3ZGFhYTY2Yi1iZjlhLTRmMjEtYjRlYy1iMjU5OGVmMGQ5NTIifQ.RdcOTuMADCRQJsjAn7cIfExd7n7cAI9jRQth_FvVZy4
 GET http://{{hostname}}:{{port}}/readyz
 
 // Register
@@ -49,13 +48,13 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 // GET user by ID
-GET http://{{hostname}}:{{port}}/api/v1/users/f08e9dde-6a77-478c-b781-d33c5bb38e2c
+GET http://{{hostname}}:{{port}}/api/v1/users/38e4d510-72af-49ef-acbc-0dc968048971
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 
 // Update user by ID
-PATCH http://{{hostname}}:{{port}}/api/v1/users/f08e9dde-6a77-478c-b781-d33c5bb38e2c
+PATCH http://{{hostname}}:{{port}}/api/v1/users/38e4d510-72af-49ef-acbc-0dc968048971
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -64,7 +63,7 @@ Authorization: Bearer {{token}}
 }
 
 // DELETE user 
-DELETE  http://{{hostname}}:{{port}}/api/v1/users/f08e9dde-6a77-478c-b781-d33c5bb38e2c
+DELETE  http://{{hostname}}:{{port}}/api/v1/users/38e4d510-72af-49ef-acbc-0dc968048971
 Content-Type: application/json
 Authorization: Bearer {{token}}
 

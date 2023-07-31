@@ -18,9 +18,6 @@ export const config = {
   logger: {
     level: env.LOG_LEVEL,
   },
-  bcrypt: {
-    saltRounds: 10,
-  },
   jwt: {
     secret: env.JWT_SECRET,
     accessToken: {
